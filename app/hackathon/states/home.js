@@ -6,12 +6,17 @@ Hackathon.config(['$stateProvider',
       templateUrl: '/hackathon/states/home.template.html',
       controllerAs: 'HomeCtrl',
       resolve: {
-        "industries": ['$q', function($q) {
+        "industries": ['$q', '$http', function($q, $http) {
           var deferred = $q.defer();
           $http.get('/api/getIndustryList')
           .success(function(data, status) {
-            var list = _.keys(data);
-            deferred.resolve(list);
+            var names = [];
+
+            _.each(data, function(item) {
+              names.push(item.name);
+            });
+            
+            deferred.resolve(names);
           });
           return deferred;
         }]
@@ -21,7 +26,7 @@ Hackathon.config(['$stateProvider',
 
         ctrl.errs = [];
         ctrl.provinces = ['Alberta', 'British Columbia', 'Manitoba', 'New Brunswick', 'Newfoundland and Labrador', 'Nova Scotia', 'Ontario', 'Prince Edward Island', 'Quebec', 'Saskatchewan'];
-        ctrl.industries = ['Business', 'Arts', 'Science', 'Law'];
+        ctrl.industries = industries;
         ctrl.loading = false;
         ctrl.selections = {
           province: '',
