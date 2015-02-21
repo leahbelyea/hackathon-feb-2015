@@ -4,16 +4,9 @@
 
 <md-input-container>
   <label>Test</label>
-  <input type="text" />
+  <input type="text"/>
 </md-input-container>
 
-<!-- <md-select md-on-open="HomeCtrl.loadProvinceList()">
-  <md-select-label>Select a Province</md-select-label>
-  <md-option ng-repeat="province in HomeCtrl.provinces" ng-value="province.name">{{ province.name }}</md-option>
-</md-select> -->
-
-<md-select ng-model="HomeCtrl.user" md-on-open="HomeCtrl.loadUsers()" style="min-width: 200px;">
-  <md-select-label>{{ HomeCtrl.user ? HomeCtrl.user.name : 'Assign to user' }}</md-select-label>
-  <md-option ng-value="user" ng-repeat="user in HomeCtrl.users">{{HomeCtrl.user.name}}</md-option>
+<md-select ng-model="HomeCtrl.selections.province" placeholder="Province">
+  <md-option ng-value="province.name" ng-repeat="province in HomeCtrl.provinces">{{ province.name }}</md-option>
 </md-select>
-<p class="result">You have assigned the task to: {{ HomeCtrl.user ? HomeCtrl.user.name : 'No one yet' }}</p>
