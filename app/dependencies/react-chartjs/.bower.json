@@ -1,0 +1,39 @@
+{
+  "name": "react-chartjs",
+  "main": "react-chartjs.js",
+  "version": "0.2.1",
+  "homepage": "https://github.com/jhudson8/react-chartjs",
+  "authors": [
+    "Joe Hudson <joehud@gmail.com>"
+  ],
+  "description": "rich interactive react charting components using chart.js",
+  "dependencies": {
+    "Chart.js": "~1.0"
+  },
+  "keywords": [
+    "react",
+    "react-component",
+    "chart",
+    "charts",
+    "graph",
+    "chartjs"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "_release": "0.2.1",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.2.1",
+    "commit": "d8bba06aaeb0e82cd8137bbd643ea8ac678b2e61"
+  },
+  "_source": "git://github.com/jhudson8/react-chartjs.git",
+  "_target": "~0.2.1",
+  "_originalSource": "react-chartjs",
+  "_direct": true
+}

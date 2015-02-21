@@ -1,49 +1,195 @@
-/**
- * Route Mappings
- * (sails.config.routes)
- *
- * Your routes map URLs to views and controllers.
- *
- * If Sails receives a URL that doesn't match any of the routes below,
- * it will check for matching files (images, scripts, stylesheets, etc.)
- * in your assets directory.  e.g. `http://localhost:1337/images/foo.jpg`
- * might match an image file: `/assets/images/foo.jpg`
- *
- * Finally, if those don't match either, the default 404 handler is triggered.
- * See `api/responses/notFound.js` to adjust your app's 404 logic.
- *
- * Note: Sails doesn't ACTUALLY serve stuff from `assets`-- the default Gruntfile in Sails copies
- * flat files from `assets` to `.tmp/public`.  This allows you to do things like compile LESS or
- * CoffeeScript for the front-end.
- *
- * For more information on configuring custom routes, check out:
- * http://sailsjs.org/#/documentation/concepts/Routes/RouteTargetSyntax.html
- */
-
 module.exports.routes = {
 
-  /***************************************************************************
-  *                                                                          *
-  * Make the view located at `views/homepage.ejs` (or `views/homepage.jade`, *
-  * etc. depending on your default view engine) your home page.              *
-  *                                                                          *
-  * (Alternatively, remove this and add an `index.html` file in your         *
-  * `assets` directory)                                                      *
-  *                                                                          *
-  ***************************************************************************/
+  /**
+   * GET (read) ALL routes
+   */
+  'GET /api/climb/findAll': {
+    controller: 'ClimbController',
+    action: 'findAll'
+  },
 
-  '/': {
-    view: 'homepage'
+  'GET /api/location/findAll': {
+    controller: 'LocationController',
+    action: 'findAll'
+  },
+
+  'GET /api/sublocation/findAll': {
+    controller: 'SublocationController',
+    action: 'findAll'
+  },
+
+  'GET /api/user/findAll': {
+    controller: 'UserController',
+    action: 'findAll'
+  },
+
+  /**
+   * GET (read) routes by Slug
+   */
+  'GET /api/climb/findBySlug/:slug': {
+    controller: 'ClimbController',
+    action: 'findBySlug'
+  },
+
+  'GET /api/location/findBySlug/:slug': {
+    controller: 'LocationController',
+    action: 'findBySlug'
+  },
+
+  'GET /api/sublocation/findBySlug/:slug': {
+    controller: 'SublocationController',
+    action: 'findBySlug'
+  },
+
+  'GET /api/user/findBySlug/:slug': {
+    controller: 'UserController',
+    action: 'findBySlug'
+  },
+
+  /**
+   * GET (read) routes by Id
+   */
+  'GET /api/climb/findById/:id': {
+    controller: 'ClimbController',
+    action: 'findById'
+  },
+
+  'GET /api/location/findById/:id': {
+    controller: 'LocationController',
+    action: 'findById'
+  },
+
+  'GET /api/sublocation/findById/:id': {
+    controller: 'SublocationController',
+    action: 'findById'
+  },
+
+  'GET /api/user/findById/:id': {
+    controller: 'UserController',
+    action: 'findById'
+  },
+
+  /**
+   * GET (read) UTILITY routes 
+   */
+  'GET /api/climb/findRandom/:count': {
+    controller: 'ClimbController',
+    action: 'findRandom'
+   },
+
+  'GET /api/sublocation/findRandom/:count': {
+    controller: 'SublocationController',
+    action: 'findRandom'
+   },
+
+  'GET /api/location/findRandom/:count': {
+    controller: 'LocationController',
+    action: 'findRandom'
+   },
+
+  'GET /api/climb/findMostViewed/:count': {
+    controller: 'ClimbController',
+    action: 'findMostViewed'
+  },
+
+  'GET /api/sublocation/findMostViewed/:count': {
+    controller: 'SublocationController',
+    action: 'findMostViewed'
+  },
+
+  'GET /api/location/findMostViewed/:count': {
+    controller: 'LocationController',
+    action: 'findMostViewed'
+  },
+
+  /**
+   * POST (create) routes
+   */
+  'POST /api/climb': {
+    controller: 'ClimbController',
+    action: 'create'
+  },
+
+  'POST /api/location': {
+    controller: 'LocationController',
+    action: 'create'
+  },
+
+  'POST /api/sublocation': {
+    controller: 'SublocationController',
+    action: 'create'
+  },
+
+  'POST /api/user': {
+    controller: 'UserController',
+    action: 'create'
+  },
+
+  /**
+   * PUT (update) routes
+   */
+  'PUT /api/climb': {
+    controller: 'ClimbController',
+    action: 'update'
+  },
+
+  'PUT /api/location': {
+    controller: 'LocationController',
+    action: 'update'
+  },
+
+  'PUT /api/sublocation': {
+    controller: 'SublocationController',
+    action: 'update'
+  },
+
+  'PUT /api/user': {
+    controller: 'UserController',
+    action: 'update'
+  },
+
+  /**
+   * DELETE (delete) routes
+   */
+  'DELETE /api/climb/:id': {
+    controller: 'ClimbController',
+    action: 'destroy'
+  },
+
+  'DELETE /api/location/:id': {
+    controller: 'LocationController',
+    action: 'destroy'
+  },
+
+  'DELETE /api/sublocation/:id': {
+    controller: 'SublocationController',
+    action: 'destroy'
+  },
+
+  'DELETE /api/user/:id': {
+    controller: 'UserController',
+    action: 'destroy'
+  },
+
+  /**
+   * Administrative Routes
+   */
+  'POST /api/admin/createBulkSublocations': {
+    controller: 'AdminController',
+    action: 'createBulkSublocations'
+  },
+
+  /**
+   * Authentication Routes
+   */
+  'POST /api/register/email': {
+    controller: 'UserController',
+    action: 'registerEmail'
+  },
+
+  'POST /api/login/email': {
+    controller: 'UserController',
+    action: 'loginEmail'
   }
-
-  /***************************************************************************
-  *                                                                          *
-  * Custom routes here...                                                    *
-  *                                                                          *
-  *  If a request to a URL doesn't match any of the custom routes above, it  *
-  * is matched against Sails route blueprints. See `config/blueprints.js`    *
-  * for configuration options and examples.                                  *
-  *                                                                          *
-  ***************************************************************************/
 
 };
