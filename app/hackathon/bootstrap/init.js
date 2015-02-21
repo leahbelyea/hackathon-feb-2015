@@ -4,9 +4,9 @@ jQuery(document).ready(function($) {
   });
 });
 
-var CragProject = angular.module('CragProject', ['ui.router', 'ngMaterial', 'react']);
+var Hackathon = angular.module('Hackathon', ['ui.router', 'ngMaterial', 'react']);
 
-CragProject.run(['$rootScope', '$mdSidenav',
+Hackathon.run(['$rootScope', '$mdSidenav',
   function($rootScope, $mdSidenav) {
 
     $rootScope.openSideNav = function() {
@@ -50,7 +50,7 @@ CragProject.run(['$rootScope', '$mdSidenav',
   }
 ]);
 
-CragProject.config(['$urlRouterProvider',
+Hackathon.config(['$urlRouterProvider',
   function($urlRouterProvider) {
     $urlRouterProvider.otherwise('/home');
   }

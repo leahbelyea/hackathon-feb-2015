@@ -1,4 +1,4 @@
-CragProject.service('SocketService',
+Hackathon.service('SocketService',
   ['StorageService',
   function(StorageService) {
 

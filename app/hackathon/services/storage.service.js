@@ -1,4 +1,4 @@
-CragProject.service('StorageService', ['$window',
+Hackathon.service('StorageService', ['$window',
   function($window) {
     return {
 
