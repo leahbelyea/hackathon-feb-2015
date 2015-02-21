@@ -21,7 +21,7 @@ var cssFilesToInject = [
 // (uses Grunt-style wildcard/glob/splat expressions)
 var jsFilesToInject = [
   // Dependencies like jQuery, or Angular are brought in here
-  '**/cragproject/**/*.js'
+  '**/hackathon/**/*.js'
 ];
 
 // Client-side HTML templates are injected using the sources below
