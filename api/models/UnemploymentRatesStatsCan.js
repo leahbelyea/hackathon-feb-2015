@@ -16,7 +16,7 @@ module.exports = {
     },
     all: {
       type: 'float',
-    }
+    },
     ltHighSchool: {
       type: 'float',
     },
