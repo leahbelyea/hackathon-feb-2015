@@ -25,6 +25,10 @@
       <div class="female" ng-click="HomeCtrl.selections.gender = 'Female';"><i ng-class="{ 'active': HomeCtrl.selections.gender === 'Female' }" class="fa fa-female"></i></div>
       <div class="male" ng-click="HomeCtrl.selections.gender = 'Male';"><i ng-class="{ 'active': HomeCtrl.selections.gender === 'Male' }" class="fa fa-male"></i></div>
     </div>
+
+    <div class="submit">
+      <md-button class="md-raised md-primary" ng-click="HomeCtrl.submit()">Submit</md-button>
+    </div>
   </div>
 
 </div>

@@ -5,6 +5,8 @@ module.exports = {
     var industry = req.param('industry');
     var name = req.param('name');
     var province = req.param('province');
+
+    return res.send(200);
   },
 
   provinceList: function(req, res) {

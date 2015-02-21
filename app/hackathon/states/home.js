@@ -10,9 +10,11 @@ Hackathon.config(['$stateProvider',
           return true;
         }
       },
-      controller: [function() {
+      controller: ['$http', function($http) {
         var ctrl = this;
-
+        ctrl.provinces = ['Alberta', 'British Columbia', 'Manitoba', 'New Brunswick', 'Newfoundland and Labrador', 'Nova Scotia', 'Ontario', 'Prince Edward Island', 'Quebec', 'Saskatchewan'];
+        ctrl.industries = ['Business', 'Arts', 'Science'];
+        ctrl.loading = false;
         ctrl.selections = {
           province: '',
           industry: '',
@@ -20,9 +22,15 @@ Hackathon.config(['$stateProvider',
           gender: ''
         };
 
-        ctrl.industries = ['Business', 'Arts', 'Science'];
-
-        ctrl.provinces = ['Alberta', 'British Columbia', 'Manitoba', 'New Brunswick', 'Newfoundland and Labrador', 'Nova Scotia', 'Ontario', 'Prince Edward Island', 'Quebec', 'Saskatchewan'];
+        ctrl.submit = function() {
+          $http.post('/api/submit')
+          .success(function(data, status) {
+            console.log('Success!');
+          })
+          .error(function(data, status) {
+            console.log('Fail!');
+          });
+        };
 
         window.HomeController = ctrl;
       }]
