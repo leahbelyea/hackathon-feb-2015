@@ -10,28 +10,20 @@ Hackathon.config(['$stateProvider',
           return true;
         }
       },
-      controller: ['thing', '$q', '$http', '$timeout', function(thing, $q, $http, $timeout) {
+      controller: [function() {
         var ctrl = this;
 
-        ctrl.thing = thing;
-
-        ctrl.provinces = [
-          {'name': 'Alberta',                   'abbreviation': 'AB' },
-          {'name': 'British Columbia',          'abbreviation': 'BC' },
-          {'name': 'Manitoba',                  'abbreviation': 'MB' },
-          {'name': 'New Brunswick',             'abbreviation': 'NB' },
-          {'name': 'Newfoundland and Labrador', 'abbreviation': 'NL' },
-          {'name': 'Nova Scotia',               'abbreviation': 'NS' },
-          {'name': 'Ontario',                   'abbreviation': 'ON' },
-          {'name': 'Prince Edward Island',      'abbreviation': 'PE' },
-          {'name': 'Quebec',                    'abbreviation': 'PQ' },
-          {'name': 'Saskatchewan',              'abbreviation': 'SK' }
-        ];
-
         ctrl.selections = {
-          province: ''
+          province: '',
+          industry: '',
+          name: '',
+          gender: ''
         };
-        
+
+        ctrl.industries = ['Business', 'Arts', 'Science'];
+
+        ctrl.provinces = ['Alberta', 'British Columbia', 'Manitoba', 'New Brunswick', 'Newfoundland and Labrador', 'Nova Scotia', 'Ontario', 'Prince Edward Island', 'Quebec', 'Saskatchewan'];
+
         window.HomeController = ctrl;
       }]
     });
