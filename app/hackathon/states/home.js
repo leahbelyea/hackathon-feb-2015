@@ -23,7 +23,7 @@ Hackathon.config(['$stateProvider',
         };
 
         ctrl.submit = function() {
-          $http.post('/api/submit')
+          $http.post('/api/submit', ctrl.selections)
           .success(function(data, status) {
             console.log('Success!');
           })
