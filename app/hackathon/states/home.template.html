@@ -1,3 +1,28 @@
-<ui-view />
+<div class="container">
 
-<h1>Home page!</h1>
+  <div class="name-selection">
+    <md-input-container>
+      <label>What is your name?</label>
+      <input type="text" ng-model="HomeCtrl.selections.name" />
+    </md-input-container>
+  </div>
+
+  <div class="area-of-study-selection">
+    <md-select ng-model="HomeCtrl.selections.industry" placeholder="What area of study would you like to pursue?">
+      <md-option ng-value="industry" ng-repeat="industry in HomeCtrl.industries">{{ industry }}</md-option>
+    </md-select>
+  </div>
+
+  <div class="province-selection">
+    <md-select ng-model="HomeCtrl.selections.province" placeholder="What province are you from?" style="min-width: 200px;">
+      <md-option ng-value="province" ng-repeat="province in HomeCtrl.provinces">{{ province }}</md-option>
+    </md-select>
+  </div>
+
+  <div class="gender-selection">
+    <h3>What is your gender?</h3>
+    <div class="female" data-ng-click="HomeCtrl.selections.gender = 'Female';"></div>
+    <div class="male" data-ng-click="HomeCtrl.selections.gender = 'Male';"></div>
+  </div>
+
+</div>

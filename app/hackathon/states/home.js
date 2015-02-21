@@ -10,9 +10,20 @@ Hackathon.config(['$stateProvider',
           return true;
         }
       },
-      controller: ['thing',  function(thing) {
+      controller: [function() {
         var ctrl = this;
-        ctrl.thing = thing;
+
+        ctrl.selections = {
+          province: '',
+          industry: '',
+          name: '',
+          gender: ''
+        };
+
+        ctrl.industries = ['Business', 'Arts', 'Science'];
+
+        ctrl.provinces = ['Alberta', 'British Columbia', 'Manitoba', 'New Brunswick', 'Newfoundland and Labrador', 'Nova Scotia', 'Ontario', 'Prince Edward Island', 'Quebec', 'Saskatchewan'];
+
         window.HomeController = ctrl;
       }]
     });

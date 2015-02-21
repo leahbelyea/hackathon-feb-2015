@@ -8,21 +8,28 @@
 module.exports = {
 
   attributes: {
-    programArea: {
-      type: 'string',
+
+    'programArea': {
+      type: 'string'
     },
-    salary6mo: {
-      type: 'integer',
+
+    'salary6mo': {
+      type: 'integer'
     },
-    salary2yr: {
-      type: 'integer',
+
+    'salary2yr': {
+      type: 'integer'
     },
-    employment6mo: {
-      type: 'float',
+
+    'employment6mo': {
+      type: 'float'
     },
-    employment2yr: {
-      type: 'float',
+
+    'employment2yr': {
+      type: 'float'
     }
+
   }
+
 };
 
