@@ -8,39 +8,52 @@
 module.exports = {
 
   attributes: {
+
     'educationalAttainment': {
-      type: 'string',
+      type: 'string'
     },
+
     'total': {
-      type: 'integer',
+      type: 'integer'
     },
+
     '25to29Women': {
-      type: 'integer',
+      type: 'integer'
     },
+
     '25to29Men': {
-      type: 'integer',
+      type: 'integer'
     },
+
     '25to29Ratio': {
-      type: 'float',
+      type: 'float'
     },
+
     '30to34Women': {
-      type: 'integer',
+      type: 'integer'
     },
+
     '30to34Men': {
-      type: 'integer',
+      type: 'integer'
     },
+
     '30to34Ratio': {
-      type: 'float',
+      type: 'float'
     },
+
     '35to39Women': {
-      type: 'integer',
+      type: 'integer'
     },
+
     '35to39Men': {
-      type: 'integer',
+      type: 'integer'
     },
+
     '35to39Ratio': {
-      type: 'float',
-    },
+      type: 'float'
+    }
+
   }
+
 };
 

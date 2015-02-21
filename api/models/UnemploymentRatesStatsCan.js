@@ -8,27 +8,36 @@
 module.exports = {
 
   attributes: {
-    province: {
-      type: 'string',
+
+    'province': {
+      type: 'string'
     },
-    year: {
-      type: 'integer',
+
+    'year': {
+      type: 'integer'
     },
-    all: {
-      type: 'float',
+
+    'all': {
+      type: 'float'
     },
-    ltHighSchool: {
-      type: 'float',
+
+    'ltHighSchool': {
+      type: 'float'
     },
-    highSchool: {
-      type: 'float',
+
+    'highSchool': {
+      type: 'float'
     },
-    collegeTrade: {
-      type: 'float',
+
+    'collegeTrade': {
+      type: 'float'
     },
-    university: {
-      type: 'float',
-    },
+
+    'university': {
+      type: 'float'
+    }
+
   }
+
 };
 
