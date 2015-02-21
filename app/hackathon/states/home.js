@@ -13,7 +13,7 @@ Hackathon.config(['$stateProvider',
       controller: ['$http', function($http) {
         var ctrl = this;
         ctrl.provinces = ['Alberta', 'British Columbia', 'Manitoba', 'New Brunswick', 'Newfoundland and Labrador', 'Nova Scotia', 'Ontario', 'Prince Edward Island', 'Quebec', 'Saskatchewan'];
-        ctrl.industries = ['Business', 'Arts', 'Science'];
+        ctrl.industries = ['Business', 'Arts', 'Science', 'Law'];
         ctrl.loading = false;
         ctrl.selections = {
           province: '',
