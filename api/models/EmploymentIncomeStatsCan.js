@@ -11,9 +11,6 @@ module.exports = {
     'educationalAttainment': {
       type: 'string',
     },
-    'total': {
-      type: 'integer',
-    },
     '25to29Women': {
       type: 'integer',
     },
