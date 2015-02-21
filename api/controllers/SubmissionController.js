@@ -8,6 +8,8 @@ module.exports = {
     var name = req.param('name');
     var province = req.param('province') == 'Other' ? 'Canada' : req.param('province');
 
+    console.log(req.params.all());
+
     var GradSurvey = OntarioGradSurvey.find().where({ programArea: industry});
     var UnemploymentOntario = UnemploymentRatesStatsCan.find().where({ year: 2012, province: 'Ontario' });
     var UnemploymentProvince = UnemploymentRatesStatsCan.find().where({ year: 2012, province: province });
@@ -47,6 +49,14 @@ module.exports = {
     }).catch(function(error) {
       console.log(error);
       return res.send(200);
+    });
+  },
+
+  getIndustryList: function(req, res) {
+    SimilarPrograms.find().exec(function(err, programs) {
+      if (err || !programs) return res.send(500, { error: err, programs: programs });
+
+      return res.send(programs);
     });
   }
 
