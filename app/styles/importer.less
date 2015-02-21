@@ -9,14 +9,45 @@ ul, li, p, h1, h2, h3, h4, h5, h6 {
   margin: 0;
 }
 
+.submit, .loading {
+  margin-top: 50px;
+  text-align: center;
+
+  md-progress-circular {
+    margin: 0 auto;
+  }
+
+  p {
+    margin-top: 15px;
+    color: rgba(0, 0, 0, 0.5);
+  }
+
+  button {
+    font-size: 24px;
+    padding: 10px 20px;
+  }
+}
+
 // Overall site wrapper
 .site-wrapper {
   margin: 20px auto;
   max-width: 970px;
 
+  .errors {
+    ul {
+      li {
+        color: red;
+      }
+    }
+  }
+
   .choices {
     margin-top: 200px;
     text-align: center;
+
+    h3 {
+      color: rgba(0, 0, 0, 0.5);
+    }
 
     .male {
       display: inline-block;
