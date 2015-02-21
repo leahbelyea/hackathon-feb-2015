@@ -1,8 +1,10 @@
 module.exports = {
 
   submit: function(req, res) {
-    var params = req.params.all();
-
+    var gender = req.param('gender');
+    var industry = req.param('industry');
+    var name = req.param('name');
+    var province = req.param('province');
   },
 
   provinceList: function(req, res) {
