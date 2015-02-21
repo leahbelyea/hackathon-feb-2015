@@ -6,18 +6,18 @@ module.exports = {
   },
 
   provinceList: function(req, res) {
-    return res.send({
-      'Alberta': 'AB',
-      'British Columbia': 'BC',
-      'Manitoba': 'MB',
-      'New Brunswick': 'NB',
-      'Newfoundland and Labrador': 'NL',
-      'Nova Scotia': 'NS',
-      'Ontario': 'ON',
-      'Prince Edward Island': 'PE',
-      'Quebec': 'PQ',
-      'Saskatchewan': 'SK'
-    });
+    return res.send([
+      {'name': 'Alberta',                   'abbreviation': 'AB' },
+      {'name': 'British Columbia',          'abbreviation': 'BC' },
+      {'name': 'Manitoba',                  'abbreviation': 'MB' },
+      {'name': 'New Brunswick',             'abbreviation': 'NB' },
+      {'name': 'Newfoundland and Labrador', 'abbreviation': 'NL' },
+      {'name': 'Nova Scotia',               'abbreviation': 'NS' },
+      {'name': 'Ontario',                   'abbreviation': 'ON' },
+      {'name': 'Prince Edward Island',      'abbreviation': 'PE' },
+      {'name': 'Quebec',                    'abbreviation': 'PQ' },
+      {'name': 'Saskatchewan',              'abbreviation': 'SK' }
+    ]);
   }
 
 };
