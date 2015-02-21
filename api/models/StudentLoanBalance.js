@@ -8,24 +8,32 @@
 module.exports = {
 
   attributes: {
-    year: {
-      type: 'integer',
+
+    'year': {
+      type: 'integer'
     },
-    doctorate: {
-      type: 'integer',
+
+    'doctorate': {
+      type: 'integer'
     },
-    master: {
-      type: 'integer',
+
+    'master': {
+      type: 'integer'
     },
-    undergraduate: {
-      type: 'integer',
+
+    'undergraduate': {
+      type: 'integer'
     },
-    nonDegree: {
-      type: 'integer',
+
+    'nonDegree': {
+      type: 'integer'
     },
-    average: {
-      type: 'integer',
-    },
+
+    'average': {
+      type: 'integer'
+    }
+
   }
+
 };
 

@@ -23,7 +23,7 @@ module.exports = function(grunt) {
 		assets: {
 
 			// Assets to watch:
-			files: ['app/cragproject/**/*',
+			files: ['app/hackathon/**/*',
 							'app/styles/**/*',
 							'tasks/pipeline.js',
 							'app/**/*.css',
