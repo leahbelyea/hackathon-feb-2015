@@ -6,19 +6,21 @@ Hackathon.config(['$stateProvider',
       templateUrl: '/hackathon/states/home.template.html',
       controllerAs: 'HomeCtrl',
       resolve: {
-        "industries": ['$q', '$http', function($q, $http) {
+        'industries': ['$q', '$http', function($q, $http) {
           var deferred = $q.defer();
+          var names = [];
+
           $http.get('/api/getIndustryList')
           .success(function(data, status) {
-            var names = [];
 
             _.each(data, function(item) {
               names.push(item.name);
             });
-            
+
             deferred.resolve(names);
           });
-          return deferred;
+
+          return deferred.promise;
         }]
       },
       controller: ['$http', '$mdDialog', 'industries', function($http, $mdDialog, industries) {
@@ -64,7 +66,7 @@ Hackathon.config(['$stateProvider',
             ctrl.errs.push('Gender choice is required!');
           }
 
-          if (errs.length !== 0) {
+          if (ctrl.errs.length !== 0) {
             return ctrl.errorsOnForm();
           }
 
