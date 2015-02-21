@@ -1,25 +1,23 @@
+var q = require('bluebird');
+
 module.exports = {
 
   submit: function(req, res) {
     var gender = req.param('gender');
     var industry = req.param('industry');
     var name = req.param('name');
-    var province = req.param('province');
-  },
+    var province = req.param('province') == 'Other' ? 'Canada' : req.param('province');
 
-  provinceList: function(req, res) {
-    return res.send([
-      {'name': 'Alberta',                   'abbreviation': 'AB' },
-      {'name': 'British Columbia',          'abbreviation': 'BC' },
-      {'name': 'Manitoba',                  'abbreviation': 'MB' },
-      {'name': 'New Brunswick',             'abbreviation': 'NB' },
-      {'name': 'Newfoundland and Labrador', 'abbreviation': 'NL' },
-      {'name': 'Nova Scotia',               'abbreviation': 'NS' },
-      {'name': 'Ontario',                   'abbreviation': 'ON' },
-      {'name': 'Prince Edward Island',      'abbreviation': 'PE' },
-      {'name': 'Quebec',                    'abbreviation': 'PQ' },
-      {'name': 'Saskatchewan',              'abbreviation': 'SK' }
-    ]);
-  }
+    var GradSurvey = OntarioGradSurvey.find().where({ programArea: industry});
+    var UnemploymentSC = UnemploymentRatesStatsCan.find().where({ year: 2012, province: province });
+ 
+    q.all([GradSurvey, UnemploymentSC]).then(function(results) {
+      console.log(results);
+
+
+    }).catch(function(error) {
+      console.log(error);
+    });
+  },
 
 };

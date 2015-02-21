@@ -20,7 +20,7 @@ Hackathon.config(['$stateProvider',
           gender: ''
         };
 
-        ctrl.industries = ['Business', 'Arts', 'Science'];
+        ctrl.industries = ['Business', 'Arts', 'Science', 'Law'];
 
         ctrl.provinces = ['Alberta', 'British Columbia', 'Manitoba', 'New Brunswick', 'Newfoundland and Labrador', 'Nova Scotia', 'Ontario', 'Prince Edward Island', 'Quebec', 'Saskatchewan'];
 
