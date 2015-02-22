@@ -8,58 +8,58 @@ module.exports = {
     var name = req.param('name');
     var province = req.param('province') == 'Other' ? 'Canada' : req.param('province');
 
-    console.log(req.params.all());
+    SimilarPrograms.findOne().where({name: industry}).exec(function(error, careers) {
+      if (error) {
+        console.log(error);
+      }
 
-    var GradSurvey = OntarioGradSurvey.find().where({ programArea: industry});
-    var UnemploymentOntario = UnemploymentRatesStatsCan.find().where({ year: 2012, province: 'Ontario' });
-    var UnemploymentProvince = UnemploymentRatesStatsCan.find().where({ year: 2012, province: province });
- 
-    q.props({GradSurvey: GradSurvey, UnemploymentOntario: UnemploymentOntario, UnemploymentProvince: UnemploymentProvince}).then(function(results) {
-      var gradRateUnadjusted = results.GradSurvey[0].employment6mo;
-      var gradRateAdjusted = getAdjustedRate(gradRateUnadjusted, ontarioGradRate, provinceGradRate);
-      var ontarioGradRate = 100 - results.UnemploymentOntario[0].university === null ? null : 100 - results.UnemploymentOntario[0].university;
-      var provinceGradRate = results.UnemploymentProvince[0].university === null ? null : 100 - results.UnemploymentProvince[0].university;
-      var nonGradRate = 100 - results.UnemploymentProvince[0].highSchool === null ? null : 100 - results.UnemploymentProvince[0].highSchool;
+      var alternativeCareers = careers.alternatives;
 
-      results = {
+      var gradSurvey = OntarioGradSurvey.find().where({ programArea: industry });
+      var gradSurveyAlt1 = OntarioGradSurvey.find().where({ programArea: alternativeCareers[0] });
+      var gradSurveyAlt2 = OntarioGradSurvey.find().where({ programArea: alternativeCareers[1] });
+      var unemploymentOntario = UnemploymentRatesStatsCan.find().where({ year: 2012, province: 'Ontario' });
+      var unemploymentProvince = UnemploymentRatesStatsCan.find().where({ year: 2012, province: province });
+      var incomeProvince = EmploymentIncomeStatsCan.find().where({ educationalAttainment: 'High school diploma or equivalent' });
+      var studentLoan = StudentLoanBalance.find().where({ year: 2012 });
+   
+      q.props({gradSurvey: gradSurvey, gradSurveyAlt1: gradSurveyAlt1, gradSurveyAlt2: gradSurveyAlt2, unemploymentOntario: unemploymentOntario, unemploymentProvince: unemploymentProvince, incomeProvince: incomeProvince, studentLoan: studentLoan }).then(function(results) {
 
-        // The users choice
-        'selectedGrad': {
-          'employmentRate': gradRateAdjusted,
-          'breakEven': 5.2,
-          'salary': 48000
-        },
-
-        // If the user does not go to school
-        'noGrad': {
-          'employmentRate': nonGradRate,
-          'salary': 25000
-        },
-
-        'alternativeGrad': [
-
-          // Alternate but similar career choice #1
-          {
-            'name': 'Law',
-            'employmentRate': 97.2,
-            'breakEven': 3,
-            'salary': 62000
+        return res.send ({
+          name: name,
+          gender: gender,
+          chosenIndustry: {
+            name: industry,
+            salary6mo: getGradIncome(results.gradSurvey),
+            debtIncurred: results.studentLoan[0]['undergraduate'],
+            employmentRate: getGradEmployment(results.gradSurvey, results.unemploymentOntario, results.unemploymentProvince),
+            breakEven: getBreakEven(getGradIncome(results.gradSurvey), getNonGradIncome(gender, results.incomeProvince), results.gradSurvey, results.studentLoan)
           },
-
-          // Alternate but similar career choice #2
-          {
-            'name': 'Optometry',
-            'employmentRate': 96.7,
-            'breakEven': 4.6,
-            'salary': 59000
+          noDegree: {
+            salary: getNonGradIncome(gender, results.incomeProvince),
+            debtIncurred: 0,
+            employmentRate: getNonGradEmployment(results.unemploymentProvince),
+          },
+          alternateIndustry1: {
+            name: careers.alternatives[0],
+            salary6mo: getGradIncome(results.gradSurveyAlt1),
+            debtIncurred: results.studentLoan[0]['undergraduate'],
+            employmentRate: getGradEmployment(results.gradSurveyAlt1, results.unemploymentOntario, results.unemploymentProvince),
+            breakEven: getBreakEven(getGradIncome(results.gradSurveyAlt1), getNonGradIncome(gender, results.incomeProvince), results.gradSurveyAlt1, results.studentLoan)
+          },
+          alternateIndustry2: {
+            name: careers.alternatives[1],
+            salary6mo: getGradIncome(results.gradSurveyAlt2),
+            debtIncurred: results.studentLoan[0]['undergraduate'],
+            employmentRate: getGradEmployment(results.gradSurveyAlt2, results.unemploymentOntario, results.unemploymentProvince),
+            breakEven: getBreakEven(getGradIncome(results.gradSurveyAlt2), getNonGradIncome(gender, results.incomeProvince), results.gradSurveyAlt2, results.studentLoan)
           }
-        ]
-      };
+        });
 
-      return res.send(results);
-    }).catch(function(error) {
-      console.log(error);
-      return res.send(200);
+      }).catch(function(error) {
+        console.log(error);
+        return res.send(200);
+      });
     });
   },
 
@@ -70,13 +70,61 @@ module.exports = {
       return res.send(programs);
     });
   }
-
 };
 
-// Adjust Ontario industry employment rate based on user's province
-function getAdjustedRate(unadjustedRate, ontarioRate, provinceRate) {
-  if (provinceRate == null || ontarioRate == null) {
-    return unadjustedRate;
+function getGradEmployment (gradSurvey, unemploymentOntario, unemploymentProvince) {
+  var gradRateUnadjusted = gradSurvey[0]['employment6mo'];
+  var ontarioGradRate = 100 - unemploymentOntario[0]['university'] === null ? null : 100 - unemploymentOntario[0]['university'];
+  var provinceGradRate = unemploymentProvince[0]['university'] === null ? null : 100 - unemploymentProvince[0]['university'];
+  if (provinceGradRate != null && ontarioGradRate != null) {
+    return gradRateAdjusted = gradRateUnadjusted * provinceGradRate / ontarioGradRate;
   }
-  return unadjustedRate * provinceRate / ontarioRate;
+  return gradRateUnadjusted;
+}
+
+function getGradIncome (gradSurvey) {
+  return gradSurvey[0]['salary6mo'];
+}
+
+function getBreakEven (gradIncome, nonGradIncome, gradSurvey, studentLoan) {
+  var year = 0;
+  var nonGradWorth = 0;
+  var gradWorth = 0;
+  var studentLoanBalance = studentLoan[0]['undergraduate'];
+  var gradIncome2yr = gradSurvey[0]['salary2yr'];
+
+  while (true) {
+
+    year++;
+    nonGradWorth += nonGradIncome;
+
+    if (year == 4) {
+      gradWorth -= studentLoanBalance;
+    }
+    else if (year > 4 && year < 6) {
+      gradWorth += gradIncome;
+    }
+    else if (year >= 6) {
+      gradWorth += gradIncome2yr;
+    }
+
+    if (gradWorth != 0 && gradWorth >= nonGradWorth) {
+      break;
+    }
+    else if (year > 60) {
+      year = null;
+      break;
+    }
+  }
+
+  return year;
+}
+
+function getNonGradEmployment(unemploymentProvince) {
+  return 100 - unemploymentProvince[0]['highSchool'] === null ? null : 100 - unemploymentProvince[0]['highSchool'];
+}
+
+function getNonGradIncome(gender, incomeProvince) {
+  var salaryCategory = gender == 'Male' ? '25to29Men' : '25to29Women';
+  return incomeProvince[0][salaryCategory];
 }
