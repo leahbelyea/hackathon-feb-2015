@@ -1,41 +1,45 @@
 <div class="container">
 
-  <div class="intro">
-    <div class="person-wrapper">
-      <i class="fa fa-male"></i>
+  <md-whiteframe class="md-whiteframe-z2" layout layout-align="center center">
+    <div class="intro">
+      <div class="person-wrapper">
+        <i class="fa fa-graduation-cap"></i>
+        <i class="fa fa-{{ ResultsCtrl.results.gender.toLowerCase() }}"></i>
+      </div>
+      <div class="text-wrapper">
+        <h1>Hi {{ ResultsCtrl.results.name }}!</h1>
+        <p>We've gathered some statistics for you to get a better idea whether or not it's a good idea for you to go to school to study {{ ResultsCtrl.results.chosenIndustry.name }}. We hope you find this information helpful!</p>
+      </div>
     </div>
-    <div class="text-wrapper">
-      <h1>Hi Steve!</h1>
-      <p>We've gathered some statistics for you to get a better idea whether or not it's a good idea for you to go to school to study Dentistry. We hope you find this information helpful!</p>
-    </div>
-  </div>
+  </md-whiteframe>
+
 
   <div class="clearfix"></div>
 
   <div class="one-quarter">
 
-    <h2>If you go to school to study Dentistry,</h2>
+    <h2>If you go to school to study {{ ResultsCtrl.results.chosenIndustry.name }},</h2>
 
     <div class="debt">
-      <p>You will incur...</p>
-      <h3>~$15,423</h3>
-      <p>in government student loan debt</p>
+      <p>You can expert to incur...</p>
+      <h3>{{ ResultsCtrl.results.chosenIndustry.debtIncurred }}</h3>
+      <p>in government student loan debt.</p>
     </div>
 
     <div class="employment-likelihood">
       <p>There is a...</p>
-      <h3>~96%</h3>
-      <p>chance you will be employed upon graduation</p>
+      <h3>{{ ResultsCtrl.results.chosenIndustry.employmentRate }}</h3>
+      <p>chance you will be employed after graduation.</p>
     </div>
 
     <div class="post-grad-salary">
       <p>You can expect your salary 6 months after graduation to be...</p>
-      <h3>~$78,000</h3>
+      <h3>{{ ResultsCtrl.results.chosenIndustry.salary6mo }}</h3>
     </div>
 
     <div class="break-even">
       <p>And in order for you to 'break even' (if you worked instead of going to school), you would have to work in the Dentistry field for...</p>
-      <h3>~3.5 years</h3>
+      <h3>{{ ResultsCtrl.results.chosenIndustry.breakEven }} years</h3>
     </div>
 
   </div>
@@ -46,25 +50,24 @@
 
     <div class="debt">
       <p>You will incur</p>
-      <h3>$0</h3>
-      <p>in government student loan debt</p>
+      <h3>{{ ResultsCtrl.results.noDegree.debtIncurred }}</h3>
+      <p>in government student loan debt.</p>
     </div>
 
     <div class="employment-likelihood">
       <p>There is a...</p>
-      <h3>~78%</h3>
-      <p>chance you will be employed</p>
+      <h3>{{ ResultsCtrl.results.noDegree.employmentRate }}</h3>
+      <p>chance you will be employed.</p>
     </div>
 
     <div class="post-grad-salary">
       <p>You can expect your salary to be</p>
-      <h3>~$25,000</h3>
+      <h3>{{ ResultsCtrl.results.noDegree.salary }}</h3>
     </div>
 
     <div class="break-even">
-      <p>And as such you can expect to earn</p>
-      <h3>~$100,000</h3>
-      <p>over the four years spent working full time instead of schooling</p>
+      <p>And as such you can expect your net worth 10 years from now to be...</p>
+      <h3>{{ ResultsCtrl.results.noDegree.netWorth10yrs }}</h3>
     </div>
 
   </div>
