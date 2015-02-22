@@ -39,6 +39,12 @@
 
     <div class="break-even">
       <p>And in order for you to 'break even' (if you worked instead of going to school), you would have to work in the Dentistry field for...</p>
+      <div class="calendar-wrapper">
+        <div class="mini-calendar" ng-repeat="year in ResultsCtrl.getCalendars(ResultsCtrl.results.chosenIndustry.breakEven) track by $index">
+          <i class="fa fa-calendar-o"></i>
+          <span>{{ ResultsCtrl.currentYear + $index }}</span>
+        </div>
+      </div>
       <h3>{{ ResultsCtrl.results.chosenIndustry.breakEven }} years</h3>
     </div>
 
@@ -63,11 +69,6 @@
     <div class="post-grad-salary">
       <p>You can expect your salary to be</p>
       <h3>{{ ResultsCtrl.results.noDegree.salary }}</h3>
-    </div>
-
-    <div class="break-even">
-      <p>And as such you can expect your net worth 10 years from now to be...</p>
-      <h3>{{ ResultsCtrl.results.noDegree.netWorth10yrs }}</h3>
     </div>
 
   </div>

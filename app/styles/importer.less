@@ -42,6 +42,31 @@ ul, li, p, h1, h2, h3, h4, h5, h6 {
   }
 }
 
+div.calendar-wrapper {
+  margin: 0 auto;
+  text-align: center;
+  color: #333;
+
+  .mini-calendar {
+    position: relative;
+    display: inline-block;
+    margin: 0 10px 10px 0;
+
+    i {
+      font-size: 50px;
+      z-index: 1;
+    }
+
+    span {
+      color: #000000;
+      position: absolute;
+      top: 22px;
+      left: 5px;
+      z-index: 999999;
+    }
+  }
+}
+
 .clearfix {
   clear: both;
   margin: 25px 0;
