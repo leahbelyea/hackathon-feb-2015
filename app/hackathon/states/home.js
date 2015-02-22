@@ -31,6 +31,8 @@ Hackathon.config(['$stateProvider',
         ctrl.industries = industries;
         ctrl.loading = false;
         ctrl.selections = {
+          receiveEmail: false,
+          viewableByPublic: false,
           province: '',
           industry: '',
           name: '',
