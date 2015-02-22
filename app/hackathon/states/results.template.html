@@ -18,8 +18,8 @@
   <div class="clearfix"></div>
 
   <div class="results">
-    <div class="one-quarter">
 
+    <div class="one-quarter">
       <h2>If you go to school to study {{ ResultsCtrl.results.chosenIndustry.name }}:</h2>
 
       <div class="debt">
@@ -58,11 +58,9 @@
         </div>
         <h3>{{ ResultsCtrl.results.chosenIndustry.breakEven }} years</h3>
       </div>
-
     </div>
 
     <div class="one-quarter">
-
       <h2>If you opt to skip school and work instead:</h2>
 
       <div class="debt">
@@ -87,8 +85,91 @@
           <h3><i class="fa fa-money"></i> {{ ResultsCtrl.results.noDegree.salary | currency: "$" :0 }}</h3>
         </div>
       </div>
+    </div>
 
-    <div class="one-quarter"></div>
-    <div class="one-quarter"></div>
+    <div class="clearfix"></div>
+
+    <div class="one-quarter">
+      <h2>If you like {{ ResultsCtrl.results.chosenIndustry.name }}, you might also be interested in pursuing {{ ResultsCtrl.results.alternateIndustry1.name }}. Here are the stats for that career path.</h2>
+
+      <div class="debt">
+        <div class="vertical-center">
+          <p>You can expect to incur</p>
+          <h3>
+            <i class="fa fa-credit-card"></i> 
+            {{ ResultsCtrl.results.alternateIndustry1.debtIncurred | currency: "$" :0 }}
+          </h3>
+          <p>in student loan debt.</p>
+        </div>
+      </div>
+
+      <div class="employment-likelihood">
+        <div class="vertical-center">
+          <p>There is a</p>
+          <h3>{{ ResultsCtrl.results.alternateIndustry1.employmentRate }}</h3>
+          <p>chance you will be employed following graduation.</p>
+        </div>
+      </div>
+
+      <div class="post-grad-salary">
+        <div class="vertical-center">
+          <p>You can expect your salary 6 months after graduation to be</p>
+          <h3><i class="fa fa-money"></i> {{ ResultsCtrl.results.alternateIndustry1.salary6mo | currency: "$" :0 }}</h3>
+        </div>
+      </div>
+
+      <div class="break-even">
+        <p>Break even point:<!--  And in order for you to 'break even' (if you worked instead of going to school), you would have to work in the Dentistry field for... --></p>
+        <div class="calendar-wrapper">
+          <div class="mini-calendar" ng-repeat="year in ResultsCtrl.getCalendars(ResultsCtrl.results.alternateIndustry1.breakEven) track by $index">
+            <i class="fa fa-calendar-o"></i>
+            <span>{{ ResultsCtrl.currentYear + $index }}</span>
+          </div>
+        </div>
+        <h3>{{ ResultsCtrl.results.alternateIndustry1.breakEven }} years</h3>
+      </div>
+    </div>
+
+    <div class="one-quarter">
+      <h2>If you like {{ ResultsCtrl.results.chosenIndustry.name }}, you might also be interested in pursuing {{ ResultsCtrl.results.alternateIndustry2.name }}. Here are the stats for that career path.</h2>
+
+      <div class="debt">
+        <div class="vertical-center">
+          <p>You can expect to incur</p>
+          <h3>
+            <i class="fa fa-credit-card"></i> 
+            {{ ResultsCtrl.results.alternateIndustry2.debtIncurred | currency: "$" :0 }}
+          </h3>
+          <p>in student loan debt.</p>
+        </div>
+      </div>
+
+      <div class="employment-likelihood">
+        <div class="vertical-center">
+          <p>There is a</p>
+          <h3>{{ ResultsCtrl.results.alternateIndustry2.employmentRate }}</h3>
+          <p>chance you will be employed following graduation.</p>
+        </div>
+      </div>
+
+      <div class="post-grad-salary">
+        <div class="vertical-center">
+          <p>You can expect your salary 6 months after graduation to be</p>
+          <h3><i class="fa fa-money"></i> {{ ResultsCtrl.results.alternateIndustry2.salary6mo | currency: "$" :0 }}</h3>
+        </div>
+      </div>
+
+      <div class="break-even">
+        <p>Break even point:<!--  And in order for you to 'break even' (if you worked instead of going to school), you would have to work in the Dentistry field for... --></p>
+        <div class="calendar-wrapper">
+          <div class="mini-calendar" ng-repeat="year in ResultsCtrl.getCalendars(ResultsCtrl.results.alternateIndustry2.breakEven) track by $index">
+            <i class="fa fa-calendar-o"></i>
+            <span>{{ ResultsCtrl.currentYear + $index }}</span>
+          </div>
+        </div>
+        <h3>{{ ResultsCtrl.results.alternateIndustry2.breakEven }} years</h3>
+      </div>
+    </div>
+
   </div>
 </div>
