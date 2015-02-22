@@ -113,6 +113,13 @@ Hackathon.config(['$stateProvider',
         var alternative1Chart = new Chart($("#alternative1-employment").get(0).getContext("2d")).Pie(alternative1ChartData);
         var alternative2Chart = new Chart($("#alternative2-employment").get(0).getContext("2d")).Pie(alternative2ChartData);
 
+        $(document).ready(function() {
+          $('.break-even-expl').hover(function() {
+            var tooltip = $(this).parent('p').parent('div.break-even').find('p.tooltip')[0];
+            $(tooltip).toggleClass('show');
+          });
+        });
+
         ctrl.getCalendars = function(years) {
           var yearsList = [];
           for (var i = 0; i < years; i++) {
