@@ -27,7 +27,7 @@
           <p>You can expect to incur</p>
           <h3>
             <i class="fa fa-credit-card"></i> 
-            ~{{ ResultsCtrl.results.chosenIndustry.debtIncurred | currency: "$" :0 }}
+            {{ ResultsCtrl.results.chosenIndustry.debtIncurred | currency: "$" :0 }}
           </h3>
           <p>in student loan debt.</p>
         </div>
@@ -35,28 +35,28 @@
 
       <div class="employment-likelihood">
         <div class="vertical-center">
-          <p>There is a</p>
-          <h3>{{ ResultsCtrl.results.chosenIndustry.employmentRate }}</h3>
-          <p>chance you will be employed following graduation.</p>
+          <canvas id="chosen-industry-employment" width="150" height="150"></canvas>
+          <h3>{{ ResultsCtrl.results.chosenIndustry.employmentRate | number : 1 }}%</h3>
+          <p>Employment rate after graduation</p>
         </div>
       </div>
 
       <div class="post-grad-salary">
         <div class="vertical-center">
           <p>You can expect your salary 6 months after graduation to be</p>
-          <h3><i class="fa fa-money"></i> ~{{ ResultsCtrl.results.chosenIndustry.salary6mo | currency: "$" :0 }}</h3>
+          <h3><i class="fa fa-money"></i> {{ ResultsCtrl.results.chosenIndustry.salary6mo | currency: "$" :0 }}</h3>
         </div>
       </div>
 
       <div class="break-even">
-        <p>Break even point:<!--  And in order for you to 'break even' (if you worked instead of going to school), you would have to work in the Dentistry field for... --></p>
+        <p>Break even point<!--  And in order for you to 'break even' (if you worked instead of going to school), you would have to work in the Dentistry field for... --></p>
         <div class="calendar-wrapper">
           <div class="mini-calendar" ng-repeat="year in ResultsCtrl.getCalendars(ResultsCtrl.results.chosenIndustry.breakEven) track by $index">
             <i class="fa fa-calendar-o"></i>
             <span>{{ ResultsCtrl.currentYear + $index }}</span>
           </div>
         </div>
-        <h3>~{{ ResultsCtrl.results.chosenIndustry.breakEven }} years</h3>
+        <h3>{{ ResultsCtrl.results.chosenIndustry.breakEven }} years</h3>
       </div>
     </div>
 
@@ -73,16 +73,16 @@
 
       <div class="employment-likelihood">
         <div class="vertical-center">
-          <p>There is a</p>
-          <h3>{{ ResultsCtrl.results.noDegree.employmentRate }}</h3>
-          <p>chance you will be employed.</p>
+          <canvas id="no-grad-employment" width="150" height="150"></canvas>
+          <h3>{{ ResultsCtrl.results.noDegree.employmentRate | number : 1 }}%</h3>
+          <p>Employment Rate</p>
         </div>
       </div>
 
       <div class="post-grad-salary">
         <div class="vertical-center">
           <p>You can expect your salary to be</p>
-          <h3><i class="fa fa-money"></i> ~{{ ResultsCtrl.results.noDegree.salary | currency: "$" :0 }}</h3>
+          <h3><i class="fa fa-money"></i> {{ ResultsCtrl.results.noDegree.salary | currency: "$" :0 }}</h3>
         </div>
       </div>
     </div>
@@ -97,7 +97,7 @@
           <p>You can expect to incur</p>
           <h3>
             <i class="fa fa-credit-card"></i> 
-            ~{{ ResultsCtrl.results.alternateIndustry1.debtIncurred | currency: "$" :0 }}
+            {{ ResultsCtrl.results.alternateIndustry1.debtIncurred | currency: "$" :0 }}
           </h3>
           <p>in student loan debt.</p>
         </div>
@@ -105,16 +105,16 @@
 
       <div class="employment-likelihood">
         <div class="vertical-center">
-          <p>There is a</p>
-          <h3>{{ ResultsCtrl.results.alternateIndustry1.employmentRate }}</h3>
-          <p>chance you will be employed following graduation.</p>
+          <canvas id="alternative1-employment" width="150" height="150"></canvas>
+          <h3>{{ ResultsCtrl.results.alternateIndustry1.employmentRate | number : 1 }}%</h3>
+          <p>Employment rate after graduation</p>
         </div>
       </div>
 
       <div class="post-grad-salary">
         <div class="vertical-center">
           <p>You can expect your salary 6 months after graduation to be</p>
-          <h3><i class="fa fa-money"></i> ~{{ ResultsCtrl.results.alternateIndustry1.salary6mo | currency: "$" :0 }}</h3>
+          <h3><i class="fa fa-money"></i> {{ ResultsCtrl.results.alternateIndustry1.salary6mo | currency: "$" :0 }}</h3>
         </div>
       </div>
 
@@ -126,7 +126,7 @@
             <span>{{ ResultsCtrl.currentYear + $index }}</span>
           </div>
         </div>
-        <h3>~{{ ResultsCtrl.results.alternateIndustry1.breakEven }} years</h3>
+        <h3>{{ ResultsCtrl.results.alternateIndustry1.breakEven }} years</h3>
       </div>
     </div>
 
@@ -138,7 +138,7 @@
           <p>You can expect to incur</p>
           <h3>
             <i class="fa fa-credit-card"></i> 
-            ~{{ ResultsCtrl.results.alternateIndustry2.debtIncurred | currency: "$" :0 }}
+            {{ ResultsCtrl.results.alternateIndustry2.debtIncurred | currency: "$" :0 }}
           </h3>
           <p>in student loan debt.</p>
         </div>
@@ -146,16 +146,16 @@
 
       <div class="employment-likelihood">
         <div class="vertical-center">
-          <p>There is a</p>
-          <h3>{{ ResultsCtrl.results.alternateIndustry2.employmentRate }}</h3>
-          <p>chance you will be employed following graduation.</p>
+          <canvas id="alternative2-employment" width="150" height="150"></canvas>
+          <h3>{{ ResultsCtrl.results.alternateIndustry2.employmentRate | number : 1 }}%</h3>
+          <p>Employment rate after graduation</p>
         </div>
       </div>
 
       <div class="post-grad-salary">
         <div class="vertical-center">
           <p>You can expect your salary 6 months after graduation to be</p>
-          <h3><i class="fa fa-money"></i> ~{{ ResultsCtrl.results.alternateIndustry2.salary6mo | currency: "$" :0 }}</h3>
+          <h3><i class="fa fa-money"></i> {{ ResultsCtrl.results.alternateIndustry2.salary6mo | currency: "$" :0 }}</h3>
         </div>
       </div>
 
@@ -167,7 +167,7 @@
             <span>{{ ResultsCtrl.currentYear + $index }}</span>
           </div>
         </div>
-        <h3>~{{ ResultsCtrl.results.alternateIndustry2.breakEven }} years</h3>
+        <h3>{{ ResultsCtrl.results.alternateIndustry2.breakEven }} years</h3>
       </div>
     </div>
 
