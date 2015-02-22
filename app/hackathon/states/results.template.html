@@ -35,9 +35,9 @@
 
       <div class="employment-likelihood">
         <div class="vertical-center">
-          <p>There is a</p>
-          <h3>{{ ResultsCtrl.results.chosenIndustry.employmentRate }}</h3>
-          <p>chance you will be employed following graduation.</p>
+          <canvas id="chosen-industry-employment" width="150" height="150"></canvas>
+          <h3>{{ ResultsCtrl.results.chosenIndustry.employmentRate | number : 1 }}%</h3>
+          <p>Employment Rate</p>
         </div>
       </div>
 
@@ -49,7 +49,7 @@
       </div>
 
       <div class="break-even">
-        <p>Break even point:<!--  And in order for you to 'break even' (if you worked instead of going to school), you would have to work in the Dentistry field for... --></p>
+        <p>Break even point<!--  And in order for you to 'break even' (if you worked instead of going to school), you would have to work in the Dentistry field for... --></p>
         <div class="calendar-wrapper">
           <div class="mini-calendar" ng-repeat="year in ResultsCtrl.getCalendars(ResultsCtrl.results.chosenIndustry.breakEven) track by $index">
             <i class="fa fa-calendar-o"></i>
@@ -75,9 +75,9 @@
 
       <div class="employment-likelihood">
         <div class="vertical-center">
-          <p>There is a</p>
-          <h3>{{ ResultsCtrl.results.noDegree.employmentRate }}</h3>
-          <p>chance you will be employed.</p>
+          <canvas id="no-grad-employment" width="150" height="150"></canvas>
+          <h3>{{ ResultsCtrl.results.noDegree.employmentRate | number : 1 }}%</h3>
+          <p>Employment Rate</p>
         </div>
       </div>
 
