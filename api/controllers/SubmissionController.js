@@ -25,7 +25,7 @@ module.exports = {
       q.props({gradSurvey: gradSurvey, gradSurveyAlt1: gradSurveyAlt1, gradSurveyAlt2: gradSurveyAlt2, unemploymentOntario: unemploymentOntario, unemploymentProvince: unemploymentProvince, incomeProvince: incomeProvince, studentLoan: studentLoan }).then(function(results) {
 
         var thing = { 
-            data: {
+          data: {
             viewableByPublic: viewableByPublic,
             name: name,
             gender: gender,
@@ -83,9 +83,9 @@ module.exports = {
 };
 
 function getGradEmployment (gradSurvey, unemploymentOntario, unemploymentProvince) {
-  var gradRateUnadjusted = gradSurvey[0]['employment6mo'];
-  var ontarioGradRate = 100 - unemploymentOntario[0]['university'] === null ? null : 100 - unemploymentOntario[0]['university'];
-  var provinceGradRate = unemploymentProvince[0]['university'] === null ? null : 100 - unemploymentProvince[0]['university'];
+  var gradRateUnadjusted = gradSurvey[0].employment6mo;
+  var ontarioGradRate = 100 - unemploymentOntario[0].university === null ? null : 100 - unemploymentOntario[0].university;
+  var provinceGradRate = unemploymentProvince[0].university === null ? null : 100 - unemploymentProvince[0].university;
   if (provinceGradRate !== null && ontarioGradRate !== null) {
     return gradRateUnadjusted * provinceGradRate / ontarioGradRate;
   }
@@ -93,15 +93,15 @@ function getGradEmployment (gradSurvey, unemploymentOntario, unemploymentProvinc
 }
 
 function getGradIncome (gradSurvey) {
-  return gradSurvey[0]['salary6mo'];
+  return gradSurvey[0].salary6mo;
 }
 
 function getBreakEven (gradIncome, nonGradIncome, gradSurvey, studentLoan) {
   var year = 0;
   var nonGradWorth = 0;
   var gradWorth = 0;
-  var studentLoanBalance = studentLoan[0]['undergraduate'];
-  var gradIncome2yr = gradSurvey[0]['salary2yr'];
+  var studentLoanBalance = studentLoan[0].undergraduate;
+  var gradIncome2yr = gradSurvey[0].salary2yr;
 
   while (true) {
 
@@ -118,7 +118,7 @@ function getBreakEven (gradIncome, nonGradIncome, gradSurvey, studentLoan) {
       gradWorth += gradIncome2yr;
     }
 
-    if (gradWorth != 0 && gradWorth >= nonGradWorth) {
+    if (gradWorth !== 0 && gradWorth >= nonGradWorth) {
       break;
     }
     else if (year > 60) {
@@ -131,7 +131,7 @@ function getBreakEven (gradIncome, nonGradIncome, gradSurvey, studentLoan) {
 }
 
 function getNonGradEmployment(unemploymentProvince) {
-  return 100 - unemploymentProvince[0]['highSchool'] === null ? null : 100 - unemploymentProvince[0]['highSchool'];
+  return 100 - unemploymentProvince[0].highSchool === null ? null : 100 - unemploymentProvince[0].highSchool;
 }
 
 function getNonGradIncome(gender, incomeProvince) {
