@@ -76,8 +76,8 @@ function getGradEmployment (gradSurvey, unemploymentOntario, unemploymentProvinc
   var gradRateUnadjusted = gradSurvey[0]['employment6mo'];
   var ontarioGradRate = 100 - unemploymentOntario[0]['university'] === null ? null : 100 - unemploymentOntario[0]['university'];
   var provinceGradRate = unemploymentProvince[0]['university'] === null ? null : 100 - unemploymentProvince[0]['university'];
-  if (provinceGradRate != null && ontarioGradRate != null) {
-    return gradRateAdjusted = gradRateUnadjusted * provinceGradRate / ontarioGradRate;
+  if (provinceGradRate !== null && ontarioGradRate !== null) {
+    return gradRateUnadjusted * provinceGradRate / ontarioGradRate;
   }
   return gradRateUnadjusted;
 }
