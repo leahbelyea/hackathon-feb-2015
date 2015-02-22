@@ -11,7 +11,7 @@ Hackathon.config(['$stateProvider',
             name: 'Leah',
             gender: 'Female',
             chosenIndustry: {
-              name: 'Dentistry',
+              name: 'Optometry',
               salary6mo: '~$60,000',
               debtIncurred: '~$15,543',
               employmentRate: '~96%',
