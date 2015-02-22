@@ -25,13 +25,13 @@ module.exports = {
    
       q.props({gradSurvey: gradSurvey, gradSurveyAlt1: gradSurveyAlt1, gradSurveyAlt2: gradSurveyAlt2, unemploymentOntario: unemploymentOntario, unemploymentProvince: unemploymentProvince, incomeProvince: incomeProvince, studentLoan: studentLoan }).then(function(results) {
 
-        return res.send ({
+        Entry.create({ data: {
           name: name,
           gender: gender,
           chosenIndustry: {
             name: industry,
             salary6mo: getGradIncome(results.gradSurvey),
-            debtIncurred: results.studentLoan[0]['undergraduate'],
+            debtIncurred: results.studentLoan[0].undergraduate,
             employmentRate: getGradEmployment(results.gradSurvey, results.unemploymentOntario, results.unemploymentProvince),
             breakEven: getBreakEven(getGradIncome(results.gradSurvey), getNonGradIncome(gender, results.incomeProvince), results.gradSurvey, results.studentLoan)
           },
@@ -43,17 +43,52 @@ module.exports = {
           alternateIndustry1: {
             name: careers.alternatives[0],
             salary6mo: getGradIncome(results.gradSurveyAlt1),
-            debtIncurred: results.studentLoan[0]['undergraduate'],
+            debtIncurred: results.studentLoan[0].undergraduate,
             employmentRate: getGradEmployment(results.gradSurveyAlt1, results.unemploymentOntario, results.unemploymentProvince),
             breakEven: getBreakEven(getGradIncome(results.gradSurveyAlt1), getNonGradIncome(gender, results.incomeProvince), results.gradSurveyAlt1, results.studentLoan)
           },
           alternateIndustry2: {
             name: careers.alternatives[1],
             salary6mo: getGradIncome(results.gradSurveyAlt2),
-            debtIncurred: results.studentLoan[0]['undergraduate'],
+            debtIncurred: results.studentLoan[0].undergraduate,
             employmentRate: getGradEmployment(results.gradSurveyAlt2, results.unemploymentOntario, results.unemploymentProvince),
             breakEven: getBreakEven(getGradIncome(results.gradSurveyAlt2), getNonGradIncome(gender, results.incomeProvince), results.gradSurveyAlt2, results.studentLoan)
           }
+        } }).exec(function(err, createdEntry) {
+          if (err || !createdEntry) return res.send(400, { error: err, createdEntry: createdEntry });
+
+          console.log('createdEntry', createdEntry);
+
+          return res.send ({
+            name: name,
+            gender: gender,
+            chosenIndustry: {
+              name: industry,
+              salary6mo: getGradIncome(results.gradSurvey),
+              debtIncurred: results.studentLoan[0].undergraduate,
+              employmentRate: getGradEmployment(results.gradSurvey, results.unemploymentOntario, results.unemploymentProvince),
+              breakEven: getBreakEven(getGradIncome(results.gradSurvey), getNonGradIncome(gender, results.incomeProvince), results.gradSurvey, results.studentLoan)
+            },
+            noDegree: {
+              salary: getNonGradIncome(gender, results.incomeProvince),
+              debtIncurred: 0,
+              employmentRate: getNonGradEmployment(results.unemploymentProvince),
+            },
+            alternateIndustry1: {
+              name: careers.alternatives[0],
+              salary6mo: getGradIncome(results.gradSurveyAlt1),
+              debtIncurred: results.studentLoan[0].undergraduate,
+              employmentRate: getGradEmployment(results.gradSurveyAlt1, results.unemploymentOntario, results.unemploymentProvince),
+              breakEven: getBreakEven(getGradIncome(results.gradSurveyAlt1), getNonGradIncome(gender, results.incomeProvince), results.gradSurveyAlt1, results.studentLoan)
+            },
+            alternateIndustry2: {
+              name: careers.alternatives[1],
+              salary6mo: getGradIncome(results.gradSurveyAlt2),
+              debtIncurred: results.studentLoan[0].undergraduate,
+              employmentRate: getGradEmployment(results.gradSurveyAlt2, results.unemploymentOntario, results.unemploymentProvince),
+              breakEven: getBreakEven(getGradIncome(results.gradSurveyAlt2), getNonGradIncome(gender, results.incomeProvince), results.gradSurveyAlt2, results.studentLoan)
+            }
+          });
         });
 
       }).catch(function(error) {
