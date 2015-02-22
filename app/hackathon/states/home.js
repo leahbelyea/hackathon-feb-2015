@@ -23,7 +23,7 @@ Hackathon.config(['$stateProvider',
           return deferred.promise;
         }]
       },
-      controller: ['$http', '$state', '$mdDialog', '$timeout', 'industries', function($http, $state, $mdDialog, $timeout, industries) {
+      controller: ['$http', '$state', '$mdDialog', '$timeout', '$rootScope', 'industries', function($http, $state, $mdDialog, $timeout, $rootScope, industries) {
         var ctrl = this;
 
         ctrl.errs = [];
@@ -76,9 +76,10 @@ Hackathon.config(['$stateProvider',
             console.log('Success!');
 
             $timeout(function() {
-              ctrl.loadingf = false;
+              ctrl.loading = false;
+              $rootScope.results = data;
               $state.go('results');
-            }, 2000);
+            }, 1000);
           })
           .error(function(data, status) {
             console.log('Fail!');

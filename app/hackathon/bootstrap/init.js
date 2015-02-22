@@ -6,8 +6,8 @@ jQuery(document).ready(function($) {
 
 var Hackathon = angular.module('Hackathon', ['ui.router', 'ngMaterial', 'react']);
 
-Hackathon.run(['$rootScope', '$mdSidenav',
-  function($rootScope, $mdSidenav) {
+Hackathon.run(['$rootScope', '$mdSidenav', '$state',
+  function($rootScope, $mdSidenav, $state) {
 
     $rootScope.openSideNav = function() {
       $mdSidenav('left').open();
@@ -26,6 +26,7 @@ Hackathon.run(['$rootScope', '$mdSidenav',
       console.error('-> fromParams:', fromParams);
       console.error('-> error:', error);
       console.error('-> event:', event);
+      $state.go('home');
     });
 
     $rootScope.$on('$stateNotFound', function(event, unfoundState, fromState, fromParams){ 
