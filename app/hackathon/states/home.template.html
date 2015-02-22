@@ -26,8 +26,28 @@
       <div class="male" ng-click="HomeCtrl.selections.gender = 'Male';"><i ng-class="{ 'active': HomeCtrl.selections.gender === 'Male' }" class="fa fa-male"></i></div>
     </div>
 
-    <div class="submit">
+    <div class="opts">
+      <md-checkbox ng-model="HomeCtrl.selections.receiveEmail">
+        I would like to receive an email copy of the info you generate
+      </md-checkbox>
+      <md-checkbox ng-model="HomeCtrl.selections.viewableByPublic">
+        Allow my information to be viewable by the public
+      </md-checkbox>
+    </div>
+
+    <div class="submit" ng-show="!HomeCtrl.loading">
       <md-button class="md-raised md-primary" ng-click="HomeCtrl.submit()">Submit</md-button>
+    </div>
+
+    <div class="loading" ng-show="HomeCtrl.loading">
+      <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+      <p>Hang on a sec, we're crunching some numbers!</p>
+    </div>
+
+    <div class="errors" ng-show="HomeCtrl.errs.length > 0">
+      <ul>
+        <li ng-repeat="err in HomeCtrl.errs">{{ err }}</li>
+      </ul>
     </div>
   </div>
 

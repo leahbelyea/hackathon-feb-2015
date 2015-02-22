@@ -9,14 +9,134 @@ ul, li, p, h1, h2, h3, h4, h5, h6 {
   margin: 0;
 }
 
+.submit, .loading {
+  margin-top: 50px;
+  text-align: center;
+
+  md-progress-circular {
+    margin: 0 auto;
+  }
+
+  p {
+    margin-top: 15px;
+    color: rgba(0, 0, 0, 0.5);
+  }
+
+  button {
+    font-size: 24px;
+    padding: 10px 20px;
+  }
+}
+
+.one-quarter {
+  display: inline-block;
+  vertical-align: top;
+  width: 475px;
+  min-height: 300px;
+  margin: 4px;
+
+  h2, h3, p {
+    text-align: center;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.clearfix {
+  clear: both;
+  margin: 25px 0;
+  height: 50px;
+}
+
+.md-whiteframe-z2 {
+  padding: 20px;
+}
+
+.intro {
+  margin-top: 100px;
+  padding: 20px;
+
+  .person-wrapper {
+    display: inline-block;
+    width: 50%;
+    text-align: center;
+    position: relative;
+
+    i.fa-graduation-cap {
+      font-size: 100px;
+      -ms-transform: rotate(-20deg);
+      -webkit-transform: rotate(-20deg);
+      transform: rotate(-20deg);
+      position: absolute;
+      top: -49px;
+      left: 140px;
+    }
+    
+    i.fa-male, i.fa-female {
+      font-size: 400px;
+    }
+
+    i.fa-male {
+      color: lighten(#183152, 20%);
+    }
+
+    i.fa-female {
+      color: lighten(#660A3E, 20%);
+    }
+  }
+
+  div.text-wrapper {
+    width: 49%;
+    vertical-align: top;
+    display: inline-block;
+    margin-top: 100px !important;
+    position: relative;
+    top: -70px;
+    left: -30px;
+
+    h1 {
+      font-size: 4em;
+    }
+
+    p {
+      font-size: 1.3em;
+    }
+
+  }
+
+}
+
+.opts {
+  margin-top: 50px;
+}
+
+.container {
+  width: 970px;
+}
+
 // Overall site wrapper
 .site-wrapper {
   margin: 20px auto;
   max-width: 970px;
 
+  .errors {
+    margin-top: 50px;
+    ul {
+      li {
+        color: red;
+      }
+    }
+  }
+
   .choices {
     margin-top: 200px;
     text-align: center;
+
+    h3 {
+      color: rgba(0, 0, 0, 0.3);
+      font-size: 24px;
+      font-weight: 400;
+    }
 
     .male {
       display: inline-block;

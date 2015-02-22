@@ -5,9 +5,9 @@ module.exports.routes = {
     action: 'submit'
   },
 
-  'GET /api/provinceList': {
+  'GET /api/getIndustryList': {
     controller: 'SubmissionController',
-    action: 'provinceList'
+    action: 'getIndustryList'
   }
 
 };

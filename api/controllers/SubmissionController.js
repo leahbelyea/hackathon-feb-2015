@@ -25,7 +25,7 @@ module.exports = {
    
       q.props({gradSurvey: gradSurvey, gradSurveyAlt1: gradSurveyAlt1, gradSurveyAlt2: gradSurveyAlt2, unemploymentOntario: unemploymentOntario, unemploymentProvince: unemploymentProvince, incomeProvince: incomeProvince, studentLoan: studentLoan }).then(function(results) {
 
-        console.log({
+        return res.send ({
           name: name,
           gender: gender,
           chosenIndustry: {
@@ -56,12 +56,18 @@ module.exports = {
           }
         });
 
-        return res.send (200);
-
       }).catch(function(error) {
         console.log(error);
         return res.send(200);
       });
+    });
+  },
+
+  getIndustryList: function(req, res) {
+    SimilarPrograms.find().exec(function(err, programs) {
+      if (err || !programs) return res.send(500, { error: err, programs: programs });
+
+      return res.send(programs);
     });
   }
 };
@@ -70,8 +76,8 @@ function getGradEmployment (gradSurvey, unemploymentOntario, unemploymentProvinc
   var gradRateUnadjusted = gradSurvey[0]['employment6mo'];
   var ontarioGradRate = 100 - unemploymentOntario[0]['university'] === null ? null : 100 - unemploymentOntario[0]['university'];
   var provinceGradRate = unemploymentProvince[0]['university'] === null ? null : 100 - unemploymentProvince[0]['university'];
-  if (provinceGradRate != null && ontarioGradRate != null) {
-    return gradRateAdjusted = gradRateUnadjusted * provinceGradRate / ontarioGradRate;
+  if (provinceGradRate !== null && ontarioGradRate !== null) {
+    return gradRateUnadjusted * provinceGradRate / ontarioGradRate;
   }
   return gradRateUnadjusted;
 }
