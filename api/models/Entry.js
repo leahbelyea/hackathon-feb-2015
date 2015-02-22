@@ -2,7 +2,7 @@ module.exports = {
 
   attributes: {
 
-    'data': {
+    data: {
       type: 'json'
     }
   }

@@ -6,15 +6,13 @@ module.exports = {
     var gender = req.param('gender');
     var industry = req.param('industry');
     var name = req.param('name');
+    var email = req.param('email');
     var province = req.param('province') == 'Other' ? 'Canada' : req.param('province');
 
-    SimilarPrograms.findOne().where({name: industry}).exec(function(error, careers) {
-      if (error) {
-        console.log(error);
-      }
+    SimilarPrograms.findOne().where({name: industry}).exec(function(err, careers) {
+      if (err) console.log(err);
 
       var alternativeCareers = careers.alternatives;
-
       var gradSurvey = OntarioGradSurvey.find().where({ programArea: industry });
       var gradSurveyAlt1 = OntarioGradSurvey.find().where({ programArea: alternativeCareers[0] });
       var gradSurveyAlt2 = OntarioGradSurvey.find().where({ programArea: alternativeCareers[1] });
