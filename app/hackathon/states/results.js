@@ -56,7 +56,7 @@ Hackathon.config(['$stateProvider',
                 label: "Employed"
             },
             {
-                value: parseFloat((100 - ctrl.results.noDegree.employmentRate).toFixed(1)),
+                value: parseFloat((100 - ctrl.results.alternateIndustry1.employmentRate).toFixed(1)),
                 color: "#B71C1C",
                 highlight: "#D32F2F",
                 label: "Unemployed"
@@ -71,7 +71,7 @@ Hackathon.config(['$stateProvider',
                 label: "Employed"
             },
             {
-                value: parseFloat((100 - ctrl.results.noDegree.employmentRate).toFixed(1)),
+                value: parseFloat((100 - ctrl.results.alternateIndustry2.employmentRate).toFixed(1)),
                 color: "#B71C1C",
                 highlight: "#D32F2F",
                 label: "Unemployed"
