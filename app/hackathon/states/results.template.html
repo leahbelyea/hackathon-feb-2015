@@ -1,6 +1,6 @@
 <div class="container">
 
-  <md-whiteframe class="md-whiteframe-z2" layout layout-align="center center">
+  <md-whiteframe class="md-whiteframe-z2 box" layout layout-align="center center">
     <div class="intro">
       <div class="person-wrapper">
         <i class="fa fa-graduation-cap"></i>
@@ -8,7 +8,9 @@
       </div>
       <div class="text-wrapper">
         <h1>Hi {{ ResultsCtrl.results.name }}!</h1>
-        <p>We've gathered some statistics for you to get a better idea whether or not it's a good idea for you to go to school to study {{ ResultsCtrl.results.chosenIndustry.name }}. We hope you find this information helpful!</p>
+        <p>We've gathered some statistics for you to get a better idea whether or not it's a good idea for you to go to school to study</p>
+        <p class="industry">{{ ResultsCtrl.results.chosenIndustry.name }}</p>
+        <p>We hope you find this information helpful!</p>
       </div>
     </div>
   </md-whiteframe>
@@ -16,61 +18,82 @@
 
   <div class="clearfix"></div>
 
-  <div class="one-quarter">
+  <div class="results">
+    <div class="one-quarter">
 
-    <h2>If you go to school to study {{ ResultsCtrl.results.chosenIndustry.name }},</h2>
+      <h2>If you go to school to study {{ ResultsCtrl.results.chosenIndustry.name }}:</h2>
 
-    <div class="debt">
-      <p>You can expert to incur...</p>
-      <h3>{{ ResultsCtrl.results.chosenIndustry.debtIncurred }}</h3>
-      <p>in government student loan debt.</p>
+      <div class="debt">
+        <div class="vertical-center">
+        <p>You can expect to incur</p>
+        <h3>
+          <i class="fa fa-credit-card"></i> 
+          {{ ResultsCtrl.results.chosenIndustry.debtIncurred | currency: "$" :0 }}
+        </h3>
+        <p>in student loan debt.</p>
+      </div>
+      </div>
+
+      <div class="employment-likelihood">
+        <div class="vertical-center">
+          <p>There is a</p>
+          <h3>{{ ResultsCtrl.results.chosenIndustry.employmentRate }}</h3>
+          <p>chance you will be employed following graduation.</p>
+        </div>
+      </div>
+
+      <div class="post-grad-salary">
+        <div class="vertical-center">
+          <p>You can expect your salary 6 months after graduation to be</p>
+          <h3><i class="fa fa-money"></i> {{ ResultsCtrl.results.chosenIndustry.salary6mo | currency: "$" :0 }}</h3>
+        </div>
+      </div>
+
+      <div class="break-even">
+        <div class="vertical-center">
+          <p>And in order for you to 'break even' (if you worked instead of going to school), you would have to work in the Dentistry field for...</p>
+          <h3>{{ ResultsCtrl.results.chosenIndustry.breakEven }} years</h3>
+        </div>
+      </div>
+
     </div>
 
-    <div class="employment-likelihood">
-      <p>There is a...</p>
-      <h3>{{ ResultsCtrl.results.chosenIndustry.employmentRate }}</h3>
-      <p>chance you will be employed after graduation.</p>
-    </div>
+    <div class="one-quarter">
 
-    <div class="post-grad-salary">
-      <p>You can expect your salary 6 months after graduation to be...</p>
-      <h3>{{ ResultsCtrl.results.chosenIndustry.salary6mo }}</h3>
-    </div>
+      <h2>If you opt to skip school and work instead:</h2>
 
-    <div class="break-even">
-      <p>And in order for you to 'break even' (if you worked instead of going to school), you would have to work in the Dentistry field for...</p>
-      <h3>{{ ResultsCtrl.results.chosenIndustry.breakEven }} years</h3>
-    </div>
+      <div class="debt">
+        <div class="vertical-center">
+          <p>You will incur</p>
+          <h3><i class="fa fa-credit-card"></i> {{ ResultsCtrl.results.noDegree.debtIncurred | currency: "$" :0 }}</h3>
+          <p>in student loan debt.</p>
+        </div>
+      </div>
 
+      <div class="employment-likelihood">
+        <div class="vertical-center">
+          <p>There is a</p>
+          <h3>{{ ResultsCtrl.results.noDegree.employmentRate }}</h3>
+          <p>chance you will be employed.</p>
+        </div>
+      </div>
+
+      <div class="post-grad-salary">
+        <div class="vertical-center">
+          <p>You can expect your salary to be</p>
+          <h3><i class="fa fa-money"></i> {{ ResultsCtrl.results.noDegree.salary | currency: "$" :0 }}</h3>
+        </div>
+      </div>
+
+      <div class="break-even">
+        <div class="vertical-center">
+          <p>And as such you can expect your net worth 10 years from now to be</p>
+          <h3>{{ ResultsCtrl.results.noDegree.netWorth10yrs }}</h3>
+        </div>
+      </div>
+
+    </div>
+    <div class="one-quarter"></div>
+    <div class="one-quarter"></div>
   </div>
-
-  <div class="one-quarter">
-
-    <h2>If you opt to skip school and work instead,</h2>
-
-    <div class="debt">
-      <p>You will incur</p>
-      <h3>{{ ResultsCtrl.results.noDegree.debtIncurred }}</h3>
-      <p>in government student loan debt.</p>
-    </div>
-
-    <div class="employment-likelihood">
-      <p>There is a...</p>
-      <h3>{{ ResultsCtrl.results.noDegree.employmentRate }}</h3>
-      <p>chance you will be employed.</p>
-    </div>
-
-    <div class="post-grad-salary">
-      <p>You can expect your salary to be</p>
-      <h3>{{ ResultsCtrl.results.noDegree.salary }}</h3>
-    </div>
-
-    <div class="break-even">
-      <p>And as such you can expect your net worth 10 years from now to be...</p>
-      <h3>{{ ResultsCtrl.results.noDegree.netWorth10yrs }}</h3>
-    </div>
-
-  </div>
-  <div class="one-quarter"></div>
-  <div class="one-quarter"></div>
 </div>

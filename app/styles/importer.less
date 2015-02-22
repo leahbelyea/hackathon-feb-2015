@@ -28,6 +28,10 @@ ul, li, p, h1, h2, h3, h4, h5, h6 {
   }
 }
 
+.box {
+  margin-top: 40px;
+}
+
 .one-quarter {
   display: inline-block;
   vertical-align: top;
@@ -39,6 +43,45 @@ ul, li, p, h1, h2, h3, h4, h5, h6 {
     text-align: center;
     margin: 0;
     padding: 0;
+  }
+
+  h2 {
+    font-size: 28px;
+  }
+
+  p {
+    font-size: 26px;
+  }
+
+  h3 {
+    font-size: 50px;
+  }
+
+  .post-grad-salary h3, .employment-likelihood h3 {
+    color: #689F38;
+  }
+
+  .debt h3 {
+    color: #B71C1C;
+  }
+
+  .debt, .employment-likelihood, .post-grad-salary, .break-even {
+    margin-bottom: 40px;
+    min-height: 200px;
+    background: #f0f0f0;
+    position: relative;
+  }
+
+  .vertical-center {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+  }
+
+  h2 {
+    margin-bottom: 20px;
+    min-height: 2.5em;
   }
 }
 
@@ -53,7 +96,7 @@ ul, li, p, h1, h2, h3, h4, h5, h6 {
 }
 
 .intro {
-  margin-top: 100px;
+  margin-top: 40px;
   padding: 20px;
 
   .person-wrapper {
@@ -100,6 +143,15 @@ ul, li, p, h1, h2, h3, h4, h5, h6 {
 
     p {
       font-size: 1.3em;
+    }
+
+    p.industry {
+      font-size: 3em;
+      font-weight: bold;
+      text-align: center;
+      background: #f0f0f0;
+      margin: 10px 0;
+      line-height: 1.5;
     }
 
   }
