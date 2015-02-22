@@ -7,36 +7,36 @@ Hackathon.config(['$stateProvider',
       controllerAs: 'ResultsCtrl',
       resolve: {
         'results': ['$rootScope', '$q', function($rootScope, $q) {
-          // return {
-          //   "name": "Leah",
-          //   "gender": "Female",
-          //   "chosenIndustry": {
-          //     "name": "Law",
-          //     "salary6mo": 57231,
-          //     "debtIncurred": 15020,
-          //     "employmentRate": 92.20671641791044,
-          //     "breakEven": 7
-          //   },
-          //   "noDegree": {
-          //     "salary": 26000,
-          //     "debtIncurred": 0,
-          //     "employmentRate": 82.8
-          //   },
-          //   "alternateIndustry1": {
-          //     "name": "Business & Commerce",
-          //     "salary6mo": 45801,
-          //     "debtIncurred": 15020,
-          //     "employmentRate": 88.13731343283581,
-          //     "breakEven": 9
-          //   },
-          //   "alternateIndustry2": {
-          //     "name": "Journalism",
-          //     "salary6mo": 31167,
-          //     "debtIncurred": 15020,
-          //     "employmentRate": 80.59402985074627,
-          //     "breakEven": 14
-          //   }
-          // };
+          return {
+            "name": "Leah",
+            "gender": "Female",
+            "chosenIndustry": {
+              "name": "Law",
+              "salary6mo": 57231,
+              "debtIncurred": 15020,
+              "employmentRate": 92.20671641791044,
+              "breakEven": 7
+            },
+            "noDegree": {
+              "salary": 26000,
+              "debtIncurred": 0,
+              "employmentRate": 82.8
+            },
+            "alternateIndustry1": {
+              "name": "Business & Commerce",
+              "salary6mo": 45801,
+              "debtIncurred": 15020,
+              "employmentRate": 88.13731343283581,
+              "breakEven": 9
+            },
+            "alternateIndustry2": {
+              "name": "Journalism",
+              "salary6mo": 31167,
+              "debtIncurred": 15020,
+              "employmentRate": 80.59402985074627,
+              "breakEven": 14
+            }
+          };
           var deferred = $q.defer();
           if ($rootScope.results) deferred.resolve($rootScope.results);
           else deferred.reject('You need to have submitted the form on step 1 first.');
@@ -112,6 +112,13 @@ Hackathon.config(['$stateProvider',
         var noGradChart = new Chart($("#no-grad-employment").get(0).getContext("2d")).Pie(noGradChartData);
         var alternative1Chart = new Chart($("#alternative1-employment").get(0).getContext("2d")).Pie(alternative1ChartData);
         var alternative2Chart = new Chart($("#alternative2-employment").get(0).getContext("2d")).Pie(alternative2ChartData);
+
+        $(document).ready(function() {
+          $('.break-even-expl').hover(function() {
+            var tooltip = $(this).parent('p').parent('div.break-even').find('p.tooltip')[0];
+            $(tooltip).toggleClass('show');
+          });
+        });
 
         ctrl.getCalendars = function(years) {
           var yearsList = [];

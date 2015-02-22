@@ -101,6 +101,26 @@ ul, li, p, h1, h2, h3, h4, h5, h6 {
     padding: 20px 0;
   }
 
+  .tooltip {
+    position: absolute;
+    left: -999999px;
+    top: 60px;
+    font-size: 16px;
+    background: #fff;
+    width: 400px;
+    z-index: 1000000;
+    padding: 10px;
+    border: 1px solid #666;
+  }
+
+  .tooltip.show {
+    left: 35px;
+  }
+
+  .break-even-expl {
+    cursor: pointer;
+  }
+
   h2 {
     margin-bottom: 20px;
     min-height: 2.5em;
