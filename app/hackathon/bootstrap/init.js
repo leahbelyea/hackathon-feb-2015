@@ -6,16 +6,8 @@ jQuery(document).ready(function($) {
 
 var Hackathon = angular.module('Hackathon', ['ui.router', 'ngMaterial', 'react']);
 
-Hackathon.run(['$rootScope', '$mdSidenav', '$state',
-  function($rootScope, $mdSidenav, $state) {
-
-    $rootScope.openSideNav = function() {
-      $mdSidenav('left').open();
-    };
-
-    $rootScope.closeSideNav = function() {
-      $mdSidenav('left').close();
-    };
+Hackathon.run(['$rootScope', '$state',
+  function($rootScope, $state) {
 
     $rootScope.$on('$stateChangeError', function(event, toState, toParams, fromState, fromParams, error) {
       console.error('Error transitioning to state: \'' + toState.name + '\'...');
@@ -38,15 +30,15 @@ Hackathon.run(['$rootScope', '$mdSidenav', '$state',
       console.log('-> fromParams', fromParams);
     });
 
-    // $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams){ 
-    //   console.log('Beginning transition to state: \'' + toState.name + '\'...');
-    //   console.log('Additional debugging:\n\n');
-    //   console.log('-> event:', event);
-    //   console.log('-> toState:', toState);
-    //   console.log('-> toParams:', toParams);
-    //   console.log('-> fromState:', fromState);
-    //   console.log('-> fromParams:', fromParams);
-    // });
+    $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams){ 
+      console.log('Beginning transition to state: \'' + toState.name + '\'...');
+      console.log('Additional debugging:\n\n');
+      console.log('-> event:', event);
+      console.log('-> toState:', toState);
+      console.log('-> toParams:', toParams);
+      console.log('-> fromState:', fromState);
+      console.log('-> fromParams:', fromParams);
+    });
 
   }
 ]);

@@ -7,6 +7,7 @@ Hackathon.config(['$stateProvider',
       controllerAs: 'ResultsCtrl',
       resolve: {
         'results': ['$rootScope', '$q', function($rootScope, $q) {
+          return true;
           var deferred = $q.defer();
           if ($rootScope.results) deferred.resolve($rootScope.results);
           else deferred.reject('You need to have submitted the form on step 1 first.');
