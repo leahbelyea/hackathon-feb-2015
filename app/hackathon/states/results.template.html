@@ -15,7 +15,6 @@
     </div>
   </md-whiteframe>
 
-
   <div class="clearfix"></div>
 
   <div class="results">
@@ -25,13 +24,13 @@
 
       <div class="debt">
         <div class="vertical-center">
-        <p>You can expect to incur</p>
-        <h3>
-          <i class="fa fa-credit-card"></i> 
-          {{ ResultsCtrl.results.chosenIndustry.debtIncurred | currency: "$" :0 }}
-        </h3>
-        <p>in student loan debt.</p>
-      </div>
+          <p>You can expect to incur</p>
+          <h3>
+            <i class="fa fa-credit-card"></i> 
+            {{ ResultsCtrl.results.chosenIndustry.debtIncurred | currency: "$" :0 }}
+          </h3>
+          <p>in student loan debt.</p>
+        </div>
       </div>
 
       <div class="employment-likelihood">
@@ -49,17 +48,17 @@
         </div>
       </div>
 
-    <div class="break-even">
-        <div class="vertical-center">
-          <p>And in order for you to 'break even' (if you worked instead of going to school), you would have to work in the Dentistry field for...</p>
-          <div class="calendar-wrapper">
-            <div class="mini-calendar" ng-repeat="year in ResultsCtrl.getCalendars(ResultsCtrl.results.chosenIndustry.breakEven) track by $index">
-              <i class="fa fa-calendar-o"></i>
-              <span>{{ ResultsCtrl.currentYear + $index }}</span>
-            </div>
+      <div class="break-even">
+        <p>Break even point:<!--  And in order for you to 'break even' (if you worked instead of going to school), you would have to work in the Dentistry field for... --></p>
+        <div class="calendar-wrapper">
+          <div class="mini-calendar" ng-repeat="year in ResultsCtrl.getCalendars(ResultsCtrl.results.chosenIndustry.breakEven) track by $index">
+            <i class="fa fa-calendar-o"></i>
+            <span>{{ ResultsCtrl.currentYear + $index }}</span>
           </div>
-          <h3>{{ ResultsCtrl.results.chosenIndustry.breakEven }} years</h3>
+        </div>
+        <h3>{{ ResultsCtrl.results.chosenIndustry.breakEven }} years</h3>
       </div>
+
     </div>
 
     <div class="one-quarter">
@@ -89,14 +88,6 @@
         </div>
       </div>
 
-      <div class="break-even">
-        <div class="vertical-center">
-          <p>And as such you can expect your net worth 10 years from now to be</p>
-          <h3>{{ ResultsCtrl.results.noDegree.netWorth10yrs }}</h3>
-        </div>
-      </div>
-      
-    </div>
     <div class="one-quarter"></div>
     <div class="one-quarter"></div>
   </div>
