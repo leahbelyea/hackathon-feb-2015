@@ -20,7 +20,9 @@
   <div class="results">
 
     <div class="one-quarter">
-      <h2>If you go to school to study {{ ResultsCtrl.results.chosenIndustry.name }}:</h2>
+      <div class="section-title">
+        <h2>{{ ResultsCtrl.results.chosenIndustry.name }}</h2>
+      </div>
 
       <div class="debt">
         <div class="vertical-center">
@@ -61,7 +63,9 @@
     </div>
 
     <div class="one-quarter">
-      <h2>If you opt to skip school and work instead:</h2>
+      <div class="section-title">
+        <h2>No Degree</h2>
+      </div>
 
       <div class="debt">
         <div class="vertical-center">
@@ -89,8 +93,12 @@
 
     <div class="clearfix"></div>
 
+    <h2 style="text-align: center; margin: 0 0 20px 0;font-size: 40px;">Because you chose {{ ResultsCtrl.results.chosenIndustry.name }}, you may also want to consider these two career paths...</h2>
+
     <div class="one-quarter">
-      <h2>If you like {{ ResultsCtrl.results.chosenIndustry.name }}, you might also be interested in pursuing {{ ResultsCtrl.results.alternateIndustry1.name }}. Here are the stats for that career path.</h2>
+      <div class="section-title">
+        <h2>{{ ResultsCtrl.results.alternateIndustry1.name }}</h2>
+      </div>
 
       <div class="debt">
         <div class="vertical-center">
@@ -131,7 +139,9 @@
     </div>
 
     <div class="one-quarter">
-      <h2>If you like {{ ResultsCtrl.results.chosenIndustry.name }}, you might also be interested in pursuing {{ ResultsCtrl.results.alternateIndustry2.name }}. Here are the stats for that career path.</h2>
+      <div class="section-title">
+        <h2>{{ ResultsCtrl.results.alternateIndustry2.name }}</h2>
+      </div>
 
       <div class="debt">
         <div class="vertical-center">
