@@ -8,33 +8,33 @@ Hackathon.config(['$stateProvider',
       resolve: {
         'results': ['$rootScope', '$q', function($rootScope, $q) {
           return {
-            "name": "sam",
-            "gender": "Male",
+            "name": "Leah",
+            "gender": "Female",
             "chosenIndustry": {
-              "name": "Humanities",
-              "salary6mo": 31925,
+              "name": "Law",
+              "salary6mo": 57231,
               "debtIncurred": 15020,
-              "employmentRate": 86,
-              "breakEven": 39
+              "employmentRate": 92.20671641791044,
+              "breakEven": 7
             },
             "noDegree": {
-              "salary": 33567,
+              "salary": 26000,
               "debtIncurred": 0,
-              "employmentRate": 86.9
+              "employmentRate": 82.8
             },
             "alternateIndustry1": {
+              "name": "Business & Commerce",
+              "salary6mo": 45801,
+              "debtIncurred": 15020,
+              "employmentRate": 88.13731343283581,
+              "breakEven": 9
+            },
+            "alternateIndustry2": {
               "name": "Journalism",
               "salary6mo": 31167,
               "debtIncurred": 15020,
-              "employmentRate": 81.2,
-              "breakEven": 31
-            },
-            "alternateIndustry2": {
-              "name": "Other Arts & Science",
-              "salary6mo": 40714,
-              "debtIncurred": 15020,
-              "employmentRate": 87.1,
-              "breakEven": 16
+              "employmentRate": 80.59402985074627,
+              "breakEven": 14
             }
           };
           // var deferred = $q.defer();
